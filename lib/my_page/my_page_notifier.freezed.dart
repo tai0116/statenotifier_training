@@ -16,9 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MyPageStateTearOff {
   const _$MyPageStateTearOff();
 
-  _MyPageState call({int count = 0}) {
+  _MyPageState call(
+      {int? count = 0,
+      String? weight,
+      String? comment,
+      List<Map<String, String?>> record = const []}) {
     return _MyPageState(
       count: count,
+      weight: weight,
+      comment: comment,
+      record: record,
     );
   }
 }
@@ -28,7 +35,10 @@ const $MyPageState = _$MyPageStateTearOff();
 
 /// @nodoc
 mixin _$MyPageState {
-  int get count => throw _privateConstructorUsedError;
+  int? get count => throw _privateConstructorUsedError;
+  String? get weight => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  List<Map<String, String?>> get record => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MyPageStateCopyWith<MyPageState> get copyWith =>
@@ -40,7 +50,11 @@ abstract class $MyPageStateCopyWith<$Res> {
   factory $MyPageStateCopyWith(
           MyPageState value, $Res Function(MyPageState) then) =
       _$MyPageStateCopyWithImpl<$Res>;
-  $Res call({int count});
+  $Res call(
+      {int? count,
+      String? weight,
+      String? comment,
+      List<Map<String, String?>> record});
 }
 
 /// @nodoc
@@ -54,12 +68,27 @@ class _$MyPageStateCopyWithImpl<$Res> implements $MyPageStateCopyWith<$Res> {
   @override
   $Res call({
     Object? count = freezed,
+    Object? weight = freezed,
+    Object? comment = freezed,
+    Object? record = freezed,
   }) {
     return _then(_value.copyWith(
       count: count == freezed
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      record: record == freezed
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, String?>>,
     ));
   }
 }
@@ -71,7 +100,11 @@ abstract class _$MyPageStateCopyWith<$Res>
           _MyPageState value, $Res Function(_MyPageState) then) =
       __$MyPageStateCopyWithImpl<$Res>;
   @override
-  $Res call({int count});
+  $Res call(
+      {int? count,
+      String? weight,
+      String? comment,
+      List<Map<String, String?>> record});
 }
 
 /// @nodoc
@@ -87,12 +120,27 @@ class __$MyPageStateCopyWithImpl<$Res> extends _$MyPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? count = freezed,
+    Object? weight = freezed,
+    Object? comment = freezed,
+    Object? record = freezed,
   }) {
     return _then(_MyPageState(
       count: count == freezed
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      record: record == freezed
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, String?>>,
     ));
   }
 }
@@ -100,15 +148,23 @@ class __$MyPageStateCopyWithImpl<$Res> extends _$MyPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
-  const _$_MyPageState({this.count = 0});
+  const _$_MyPageState(
+      {this.count = 0, this.weight, this.comment, this.record = const []});
 
   @JsonKey(defaultValue: 0)
   @override
-  final int count;
+  final int? count;
+  @override
+  final String? weight;
+  @override
+  final String? comment;
+  @JsonKey(defaultValue: const [])
+  @override
+  final List<Map<String, String?>> record;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MyPageState(count: $count)';
+    return 'MyPageState(count: $count, weight: $weight, comment: $comment, record: $record)';
   }
 
   @override
@@ -116,7 +172,10 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'MyPageState'))
-      ..add(DiagnosticsProperty('count', count));
+      ..add(DiagnosticsProperty('count', count))
+      ..add(DiagnosticsProperty('weight', weight))
+      ..add(DiagnosticsProperty('comment', comment))
+      ..add(DiagnosticsProperty('record', record));
   }
 
   @override
@@ -124,12 +183,23 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
     return identical(this, other) ||
         (other is _MyPageState &&
             (identical(other.count, count) ||
-                const DeepCollectionEquality().equals(other.count, count)));
+                const DeepCollectionEquality().equals(other.count, count)) &&
+            (identical(other.weight, weight) ||
+                const DeepCollectionEquality().equals(other.weight, weight)) &&
+            (identical(other.comment, comment) ||
+                const DeepCollectionEquality()
+                    .equals(other.comment, comment)) &&
+            (identical(other.record, record) ||
+                const DeepCollectionEquality().equals(other.record, record)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(count);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(count) ^
+      const DeepCollectionEquality().hash(weight) ^
+      const DeepCollectionEquality().hash(comment) ^
+      const DeepCollectionEquality().hash(record);
 
   @JsonKey(ignore: true)
   @override
@@ -138,10 +208,20 @@ class _$_MyPageState with DiagnosticableTreeMixin implements _MyPageState {
 }
 
 abstract class _MyPageState implements MyPageState {
-  const factory _MyPageState({int count}) = _$_MyPageState;
+  const factory _MyPageState(
+      {int? count,
+      String? weight,
+      String? comment,
+      List<Map<String, String?>> record}) = _$_MyPageState;
 
   @override
-  int get count => throw _privateConstructorUsedError;
+  int? get count => throw _privateConstructorUsedError;
+  @override
+  String? get weight => throw _privateConstructorUsedError;
+  @override
+  String? get comment => throw _privateConstructorUsedError;
+  @override
+  List<Map<String, String?>> get record => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MyPageStateCopyWith<_MyPageState> get copyWith =>
