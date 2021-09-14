@@ -6,13 +6,14 @@ import 'package:state_notifier/state_notifier.dart';
 
 part 'my_page_notifier.freezed.dart';
 
+//freezedをコマンドで登録してから、変数を使わないと変なエラーが出てくるので注意。
 @freezed
 abstract class MyPageState with _$MyPageState {
   const factory MyPageState({
     @Default(0) int? count,
     String? weight,
     String? comment,
-    //@Default([]) List<Map<String, String>> record,
+    @Default([]) List<Map<String, String?>> record,
   }) = _MyPageState;
 }
 
@@ -123,16 +124,16 @@ class MyPageNotifier extends StateNotifier<MyPageState> with LocatorMixin {
   }
 
   void _register() {
-    // final formRecord = {
-    //   'weight': state.weight,
-    //   'comment': state.comment,
-    //   'day': DateTime.now().toString(),
-    // };
-    // print(formRecord);
-    // final newRecord = List<Map<String, String>>.from(state.record);
-    // newRecord.add(formRecord);
-    // state = state.copyWith(record: newRecord);
-    // print(state.record);
-    // Navigator.pop(context);
+    final formRecord = {
+      'weight': state.weight,
+      'comment': state.comment,
+      'day': DateTime.now().toString(),
+    };
+    print(formRecord);
+    final newRecord = List<Map<String, String?>>.from(state.record);
+    newRecord.add(formRecord);
+    state = state.copyWith(record: newRecord);
+    print(state.record);
+    Navigator.pop(context);
   }
 }
